@@ -5,6 +5,7 @@ import About from './sections/About'
 import Experience from './sections/Experience'
 import Skills from './sections/Skills'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import { content } from './data/content'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Experience content={content.experience} />
       </main>
       <Footer content={content.profile} />
+      <ScrollToTop />
     </>
   )
 }
