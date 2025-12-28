@@ -57,6 +57,34 @@ const About = ({ content }) => {
                                 {content.summary}
                             </Typography>
 
+                            {/* Personal Details */}
+                            <Box sx={{ mb: 4, display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 2 }}>
+                                <Box>
+                                    <Typography variant="caption" color="text.secondary" display="block" gutterBottom>
+                                        From
+                                    </Typography>
+                                    <Typography variant="body1" fontWeight={500}>
+                                        {content.location}
+                                    </Typography>
+                                </Box>
+                                <Box>
+                                    <Typography variant="caption" color="text.secondary" display="block" gutterBottom>
+                                        Nationality
+                                    </Typography>
+                                    <Typography variant="body1" fontWeight={500}>
+                                        {content.nationality || "Portuguese"}
+                                    </Typography>
+                                </Box>
+                                <Box>
+                                    <Typography variant="caption" color="text.secondary" display="block" gutterBottom>
+                                        Date of Birth
+                                    </Typography>
+                                    <Typography variant="body1" fontWeight={500}>
+                                        {content.birthDate || "25 Oct 1993"}
+                                    </Typography>
+                                </Box>
+                            </Box>
+
                             <Stack direction="row" spacing={6} mt={4}>
                                 <Box>
                                     <Typography variant="h2" sx={{ color: 'secondary.main', fontWeight: 800 }}>

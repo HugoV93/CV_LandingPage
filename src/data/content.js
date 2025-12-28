@@ -7,6 +7,8 @@ export const content = {
     subtitle: ".NET & React Specialist",
     summary: "Dedicated IT professional with a robust background in the .NET framework. Currently specializing in ASP.NET Core and React to build scalable web APIs and intuitive user interfaces. Proven track record of delivering high-quality code in agile environments for telecommunications and logistics leaders.",
     location: "Porto, Portugal",
+    nationality: "Portuguese",
+    birthDate: "25 October 1993", // Placeholder
     phone: "+351 910 617 744",
     email: "hugoviana93@gmail.com",
     social: [
