@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { GitHub, LinkedIn, Email, Place, Phone } from '@mui/icons-material';
 
 export const content = {
   profile: {
@@ -12,20 +12,20 @@ export const content = {
     social: [
       {
         name: "Email",
-        icon: Mail,
+        icon: Email,
         url: "mailto:hugoviana93@gmail.com"
       },
-       // Add LinkedIn/Github placeholders if not provided, but generic valid ones or commented out
-      /* 
+      // Uncomment and add real links when available
+      /*
       {
         name: "LinkedIn",
-        icon: Linkedin,
-        url: "#"
+        icon: LinkedIn,
+        url: "https://linkedin.com/in/yourprofile"
       },
       {
         name: "GitHub",
-        icon: Github,
-        url: "#"
+        icon: GitHub,
+        url: "https://github.com/yourusername"
       }
       */
     ]

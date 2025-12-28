@@ -1,58 +1,127 @@
-import { ArrowRight, Download } from 'lucide-react';
+import React from 'react';
+import { Container, Box, Typography, Button, Stack } from '@mui/material';
+import { ArrowForward, Download } from '@mui/icons-material';
 
 const Hero = ({ content }) => {
     return (
-        <section
-            style={{
+        <Box
+            component="section"
+            sx={{
                 minHeight: '100vh',
                 display: 'flex',
                 alignItems: 'center',
-                paddingTop: '60px', /* Navbar offset */
+                pt: 8,
                 position: 'relative',
-                overflow: 'hidden'
+                overflow: 'hidden',
             }}
         >
             {/* Background Glow */}
-            <div style={{
-                position: 'absolute',
-                top: '20%',
-                right: '-10%',
-                width: '500px',
-                height: '500px',
-                background: 'var(--primary-glow)',
-                filter: 'blur(100px)',
-                borderRadius: '50%',
-                zIndex: -1,
-                opacity: 0.5
-            }} />
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: '20%',
+                    right: '-10%',
+                    width: '500px',
+                    height: '500px',
+                    background: 'rgba(59, 130, 246, 0.5)', // primary glow
+                    filter: 'blur(100px)',
+                    borderRadius: '50%',
+                    zIndex: -1,
+                    opacity: 0.5,
+                }}
+            />
 
-            <div className="container" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '2rem' }}>
-                <div style={{ maxWidth: '800px' }}>
-                    <p style={{ color: 'var(--accent)', fontWeight: '600', marginBottom: '1rem', letterSpacing: '2px' }}>
-                        HI THERE, I'M
-                    </p>
-                    <h1 style={{ fontSize: 'clamp(3rem, 5vw, 5rem)', fontWeight: '800', lineHeight: '1.1', marginBottom: '1rem' }}>
-                        <span className="gradient-text">{content.name}</span>
-                    </h1>
-                    <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.5rem)', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+            <Container maxWidth="lg">
+                <Box maxWidth="800px">
+                    <Typography
+                        variant="h6"
+                        sx={{
+                            color: 'secondary.main',
+                            fontWeight: 600,
+                            mb: 2,
+                            letterSpacing: 2,
+                            textTransform: 'uppercase',
+                        }}
+                    >
+                        Hi There, I'm
+                    </Typography>
+
+                    <Typography
+                        variant="h1"
+                        sx={{
+                            fontWeight: 800,
+                            lineHeight: 1.1,
+                            mb: 2,
+                            fontSize: { xs: '3rem', md: '5rem' },
+                            background: (theme) => `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                        }}
+                    >
+                        {content.name}
+                    </Typography>
+
+                    <Typography
+                        variant="h2"
+                        sx={{
+                            fontSize: { xs: '1.5rem', md: '2.5rem' },
+                            color: 'text.secondary',
+                            mb: 3,
+                        }}
+                    >
                         {content.subtitle}
-                    </h2>
-                    <p style={{ fontSize: '1.2rem', color: 'var(--text-muted)', marginBottom: '2.5rem', maxWidth: '600px', lineHeight: '1.8' }}>
+                    </Typography>
+
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            fontSize: '1.2rem',
+                            color: 'text.secondary',
+                            mb: 5,
+                            maxWidth: '600px',
+                            lineHeight: 1.8,
+                        }}
+                    >
                         Transforming complex problems into elegant, scalable web solutions.
                         Specializing in modern .NET backends and dynamic React frontends.
-                    </p>
+                    </Typography>
 
-                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                        <a href="#projects" className="btn btn-primary">
-                            View My Work <ArrowRight size={20} />
-                        </a>
-                        <a href="#" className="btn glass-card" style={{ padding: '0.75rem 1.5rem' }}>
-                            Download CV <Download size={20} />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <Stack direction="row" spacing={2} flexWrap="wrap">
+                        <Button
+                            variant="contained"
+                            size="large"
+                            href="#experience"
+                            endIcon={<ArrowForward />}
+                            sx={{ px: 4, py: 1.5, fontSize: '1rem', borderRadius: 2 }}
+                        >
+                            View My Work
+                        </Button>
+                        <Button
+                            variant="outlined"
+                            size="large"
+                            href="#"
+                            endIcon={<Download />}
+                            sx={{
+                                px: 4,
+                                py: 1.5,
+                                fontSize: '1rem',
+                                borderRadius: 2,
+                                color: 'text.primary',
+                                borderColor: 'rgba(255,255,255,0.2)',
+                                backdropFilter: 'blur(10px)',
+                                bgcolor: 'rgba(255,255,255,0.05)',
+                                '&:hover': {
+                                    bgcolor: 'rgba(255,255,255,0.1)',
+                                    borderColor: 'white'
+                                }
+                            }}
+                        >
+                            Download CV
+                        </Button>
+                    </Stack>
+                </Box>
+            </Container>
+        </Box>
     );
 };
 

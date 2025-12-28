@@ -1,44 +1,118 @@
-import { Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
+import React from 'react';
+import { Box, Container, Typography, Stack, IconButton, Divider } from '@mui/material';
+import { GitHub, LinkedIn, Twitter, Email, Phone, Map } from '@mui/icons-material';
+
+// Helper to map icon names to MUI components
+const IconMap = {
+    Github: GitHub,
+    Linkedin: LinkedIn,
+    Twitter: Twitter,
+    Email: Email,
+    Phone: Phone,
+    // Add others if needed
+};
 
 const Footer = ({ content }) => {
+    const currentYear = new Date().getFullYear();
+
     return (
-        <footer
+        <Box
+            component="footer"
             id="contact"
-            style={{
-                padding: '4rem 0 2rem',
-                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
-                background: 'linear-gradient(to top, var(--bg-card) 0%, transparent 100%)'
+            sx={{
+                py: 8,
+                background: 'linear-gradient(to top, rgba(30, 41, 59, 0.7) 0%, transparent 100%)',
+                borderTop: '1px solid rgba(255,255,255,0.1)'
             }}
         >
-            <div className="container" style={{ textAlign: 'center' }}>
-                <h2 className="gradient-text" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Let's Connect</h2>
-                <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', maxWidth: '600px', margin: '0 auto 2rem' }}>
-                    Feel free to reach out for collaborations or just a friendly hello.
-                </p>
+            <Container maxWidth="lg">
+                <Stack spacing={4} alignItems="center" textAlign="center">
+                    <Typography variant="h3" className="gradient-text" gutterBottom>
+                        Let's Connect
+                    </Typography>
+                    <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600 }}>
+                        Feel free to reach out for collaborations or just a friendly hello.
+                    </Typography>
 
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', marginBottom: '3rem' }}>
-                    {content.social.map((item) => (
-                        <a
-                            key={item.name}
-                            href={item.url}
-                            className="glass-card"
-                            style={{ padding: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-main)' }}
-                        >
-                            <item.icon size={20} color="var(--accent)" />
-                            <span>{item.name === 'Email' ? content.email : item.name}</span>
-                        </a>
-                    ))}
-                    <div className="glass-card" style={{ padding: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                        <Phone size={20} color="var(--accent)" />
-                        <span>{content.phone}</span>
-                    </div>
-                </div>
+                    <Stack direction="row" spacing={2} flexWrap="wrap" justifyContent="center">
+                        {/* Social Links from Props */}
+                        {content?.social?.map((item) => {
+                            // Check if we have a mapping, otherwise fallback (or handle appropriately)
+                            // Note: Lucide icons were used before. We need to map them or import them.
+                            // For now, assuming standard naming or using what's available.
+                            // If content.js imports Lucide icons directly, we can't use them easily in MUI unless we wrap them.
+                            // Let's rely on the fact we installed @mui/icons-material and map likely names.
+                            // Actually, the previous file used `item.icon`. If `item.icon` is a component, we can render it? 
+                            // Yes, but it's a Lucide component. We should probably use MUI icons for consistency.
+                            // Let's see if we can just render `item.icon` as a component if it's passed.
+                            // But we want to remove Lucide dependency eventually. 
+                            // Let's Assume for now we will fix data/content.js later or accept Lucide icons inside MUI buttons.
 
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginTop: '3rem' }}>
-                    © {new Date().getFullYear()} {content.name}. Built with React & Vanilla CSS.
-                </p>
-            </div>
-        </footer>
+                            const IconComponent = item.icon;
+                            // If item.icon is a React component (Lucide), we can use it.
+                            // But we want to use MUI IconButton.
+
+                            return (
+                                <Box
+                                    key={item.name}
+                                    component="a"
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    sx={{
+                                        p: 2,
+                                        borderRadius: 2,
+                                        bgcolor: 'rgba(30, 41, 59, 0.7)',
+                                        backdropFilter: 'blur(12px)',
+                                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                                        color: 'text.primary',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: 1,
+                                        transition: 'all 0.3s ease',
+                                        textDecoration: 'none',
+                                        '&:hover': {
+                                            transform: 'translateY(-5px)',
+                                            borderColor: 'primary.main',
+                                            boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)'
+                                        }
+                                    }}
+                                >
+                                    {/* Render the icon safely */}
+                                    {IconComponent && <IconComponent size={20} />}
+                                    <Typography variant="button">{item.name === 'Email' ? content.email : item.name}</Typography>
+                                </Box>
+                            )
+                        })}
+
+                        {/* Phone number manually if not in social */}
+                        {content?.phone && (
+                            <Box
+                                sx={{
+                                    p: 2,
+                                    borderRadius: 2,
+                                    bgcolor: 'rgba(30, 41, 59, 0.7)',
+                                    backdropFilter: 'blur(12px)',
+                                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                                    color: 'text.primary',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 1,
+                                }}
+                            >
+                                <Phone sx={{ color: 'secondary.main' }} />
+                                <Typography variant="button">{content.phone}</Typography>
+                            </Box>
+                        )}
+
+                    </Stack>
+
+                    <Typography variant="body2" color="text.secondary" sx={{ mt: 4 }}>
+                        © {currentYear} {content?.name || 'Hugo Matos Viana'}. Built with React & MUI v6.
+                    </Typography>
+                </Stack>
+            </Container>
+        </Box>
     );
 };
 

@@ -1,46 +1,70 @@
-import { Briefcase, Calendar } from 'lucide-react';
+import React from 'react';
+import { Container, Box, Typography, Card, Stack } from '@mui/material';
+import { CalendarToday } from '@mui/icons-material';
 
 const Experience = ({ content }) => {
     return (
-        <section id="experience" className="section-padding">
-            <div className="container">
-                <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>
-                    Work <span className="gradient-text">Experience</span>
-                </h2>
+        <Box component="section" id="experience" sx={{ py: 12 }}>
+            <Container maxWidth="lg">
+                <Typography variant="h3" align="center" sx={{ mb: 8, fontWeight: 700 }}>
+                    Work{' '}
+                    <Box
+                        component="span"
+                        sx={{
+                            background: (theme) => `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                        }}
+                    >
+                        Experience
+                    </Box>
+                </Typography>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+                <Stack spacing={4} maxWidth="800px" mx="auto">
                     {content.map((job, index) => (
-                        <div
+                        <Card
                             key={index}
-                            className="glass-card"
-                            style={{
-                                padding: '2rem',
-                                borderLeft: '4px solid var(--primary)',
-                                position: 'relative'
+                            sx={{
+                                p: 4,
+                                borderLeft: (theme) => `4px solid ${theme.palette.primary.main}`,
+                                background: 'rgba(30, 41, 59, 0.6)',
+                                backdropFilter: 'blur(12px)',
+                                transition: 'transform 0.3s',
+                                '&:hover': { transform: 'translateX(10px)' },
                             }}
                         >
-                            <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem', marginBottom: '1rem' }}>
-                                <div>
-                                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{job.role}</h3>
-                                    <h4 style={{ color: 'var(--primary)', fontWeight: '600' }}>{job.company}</h4>
-                                </div>
-                                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
-                                    <Calendar size={16} />
-                                    <span>{job.period}</span>
-                                </div>
-                            </div>
+                            <Stack
+                                direction={{ xs: 'column', sm: 'row' }}
+                                justifyContent="space-between"
+                                alignItems={{ xs: 'flex-start', sm: 'center' }}
+                                spacing={1}
+                                mb={2}
+                            >
+                                <Box>
+                                    <Typography variant="h5" fontWeight={600}>
+                                        {job.role}
+                                    </Typography>
+                                    <Typography variant="h6" color="primary.main" fontWeight={500}>
+                                        {job.company}
+                                    </Typography>
+                                </Box>
 
-                            <div style={{ color: 'var(--text-muted)', lineHeight: '1.7' }}>
-                                {/* Check if description contains bullets or is a paragraph */}
-                                <p>{job.description}</p>
-                            </div>
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.secondary' }}>
+                                    <CalendarToday sx={{ fontSize: 18 }} />
+                                    <Typography variant="body2" sx={{ fontWeight: 500 }}>
+                                        {job.period}
+                                    </Typography>
+                                </Box>
+                            </Stack>
 
-                            {/* Optional: Add decorative circle on timeline if we added a vertical line */}
-                        </div>
+                            <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
+                                {job.description}
+                            </Typography>
+                        </Card>
                     ))}
-                </div>
-            </div>
-        </section>
+                </Stack>
+            </Container>
+        </Box>
     );
 };
 

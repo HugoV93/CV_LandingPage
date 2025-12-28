@@ -9,7 +9,7 @@ import { content } from './data/content'
 
 function App() {
   return (
-    <div className="app">
+    <>
       <Navbar />
       <main>
         <Hero content={content.profile} />
@@ -18,7 +18,7 @@ function App() {
         <Experience content={content.experience} />
       </main>
       <Footer content={content.profile} />
-    </div>
+    </>
   )
 }
 

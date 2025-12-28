@@ -1,52 +1,106 @@
+import React from 'react';
+import { Container, Box, Typography, Grid, Paper, Stack } from '@mui/material';
+
 const About = ({ content }) => {
     return (
-        <section id="about" className="section-padding">
-            <div className="container">
-                <div className="glass-card" style={{ padding: '3rem', position: 'relative', overflow: 'hidden' }}>
+        <Box component="section" id="about" sx={{ py: 12 }}>
+            <Container maxWidth="lg">
+                <Paper
+                    elevation={0}
+                    sx={{
+                        p: { xs: 3, md: 6 },
+                        position: 'relative',
+                        overflow: 'hidden',
+                        borderRadius: 4,
+                        bgcolor: 'rgba(30, 41, 59, 0.4)',
+                        backdropFilter: 'blur(12px)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                    }}
+                >
                     {/* Decorative element */}
-                    <div style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '4px',
-                        height: '100%',
-                        background: 'var(--gradient-main)'
-                    }} />
+                    <Box
+                        sx={{
+                            position: 'absolute',
+                            top: 0,
+                            left: 0,
+                            width: '4px',
+                            height: '100%',
+                            background: (theme) => `linear-gradient(to bottom, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
+                        }}
+                    />
 
-                    <h2 style={{ marginBottom: '2rem', fontSize: '2.5rem' }}>Professional <span className="gradient-text">Profile</span></h2>
+                    <Typography variant="h3" sx={{ mb: 4, fontWeight: 700 }}>
+                        Professional{' '}
+                        <Box
+                            component="span"
+                            sx={{
+                                background: (theme) => `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                            }}
+                        >
+                            Profile
+                        </Box>
+                    </Typography>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem' }}>
-                        <div>
-                            <p style={{ fontSize: '1.1rem', color: 'var(--text-muted)', marginBottom: '1.5rem' }}>
+                    <Grid container spacing={6}>
+                        <Grid item xs={12} md={7}>
+                            <Typography variant="body1" sx={{ fontSize: '1.1rem', color: 'text.secondary', mb: 3, lineHeight: 1.8 }}>
                                 {content.summary}
-                            </p>
-                            <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem' }}>
-                                <div>
-                                    <h3 style={{ fontSize: '3rem', color: 'var(--accent)', fontWeight: '800' }}>4+</h3>
-                                    <p style={{ color: 'var(--text-muted)' }}>Years Experience</p>
-                                </div>
-                                <div>
-                                    <h3 style={{ fontSize: '3rem', color: 'var(--primary)', fontWeight: '800' }}>10+</h3>
-                                    <p style={{ color: 'var(--text-muted)' }}>Projects Completed</p>
-                                </div>
-                            </div>
-                        </div>
+                            </Typography>
 
-                        <div style={{ background: 'rgba(0,0,0,0.2)', padding: '2rem', borderRadius: 'var(--radius-md)' }}>
-                            <h3 style={{ marginBottom: '1rem' }}>Focus Areas</h3>
-                            <ul style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                                {['Scalable Web APIs', 'Responsive UI Design', 'Performance Optimization', 'Clean Architecture'].map((item) => (
-                                    <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                                        <span style={{ height: '8px', width: '8px', borderRadius: '50%', background: 'var(--accent)' }} />
-                                        {item}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                            <Stack direction="row" spacing={6} mt={4}>
+                                <Box>
+                                    <Typography variant="h2" sx={{ color: 'secondary.main', fontWeight: 800 }}>
+                                        4+
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Years Experience
+                                    </Typography>
+                                </Box>
+                                <Box>
+                                    <Typography variant="h2" sx={{ color: 'primary.main', fontWeight: 800 }}>
+                                        10+
+                                    </Typography>
+                                    <Typography variant="body2" color="text.secondary">
+                                        Projects Completed
+                                    </Typography>
+                                </Box>
+                            </Stack>
+                        </Grid>
+
+                        <Grid item xs={12} md={5}>
+                            <Box
+                                sx={{
+                                    bgcolor: 'rgba(0,0,0,0.2)',
+                                    p: 4,
+                                    borderRadius: 3,
+                                }}
+                            >
+                                <Typography variant="h5" sx={{ mb: 2, fontWeight: 600 }}>
+                                    Focus Areas
+                                </Typography>
+                                <Stack spacing={2}>
+                                    {['Scalable Web APIs', 'Responsive UI Design', 'Performance Optimization', 'Clean Architecture'].map((item) => (
+                                        <Box key={item} sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                            <Box
+                                                sx={{
+                                                    height: 8,
+                                                    width: 8,
+                                                    borderRadius: '50%',
+                                                    bgcolor: 'secondary.main',
+                                                }}
+                                            />
+                                            <Typography variant="body1">{item}</Typography>
+                                        </Box>
+                                    ))}
+                                </Stack>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </Paper>
+            </Container>
+        </Box>
     );
 };
 
