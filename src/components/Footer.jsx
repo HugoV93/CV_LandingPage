@@ -27,7 +27,18 @@ const Footer = ({ content }) => {
         >
             <Container maxWidth="lg">
                 <Stack spacing={4} alignItems="center" textAlign="center">
-                    <Typography variant="h3" className="gradient-text" gutterBottom>
+                    <Typography
+                        variant="h3"
+                        align="center"
+                        gutterBottom
+                        sx={{
+                            fontWeight: 700,
+                            mb: 2,
+                            background: (theme) => `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+                            WebkitBackgroundClip: 'text',
+                            WebkitTextFillColor: 'transparent',
+                        }}
+                    >
                         Let's Connect
                     </Typography>
                     <Typography variant="body1" color="text.secondary" sx={{ maxWidth: 600 }}>
@@ -85,25 +96,7 @@ const Footer = ({ content }) => {
                             )
                         })}
 
-                        {/* Phone number manually if not in social */}
-                        {content?.phone && (
-                            <Box
-                                sx={{
-                                    p: 2,
-                                    borderRadius: 2,
-                                    bgcolor: 'rgba(30, 41, 59, 0.7)',
-                                    backdropFilter: 'blur(12px)',
-                                    border: '1px solid rgba(255, 255, 255, 0.1)',
-                                    color: 'text.primary',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    gap: 1,
-                                }}
-                            >
-                                <Phone sx={{ color: 'secondary.main' }} />
-                                <Typography variant="button">{content.phone}</Typography>
-                            </Box>
-                        )}
+
 
                     </Stack>
 

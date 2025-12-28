@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Box, Typography, Button, Stack } from '@mui/material';
-import { ArrowForward, Download } from '@mui/icons-material';
+import { ArrowForward } from '@mui/icons-material';
 
 const Hero = ({ content }) => {
     return (
@@ -86,38 +86,27 @@ const Hero = ({ content }) => {
                         Specializing in modern .NET backends and dynamic React frontends.
                     </Typography>
 
-                    <Stack direction="row" spacing={2} flexWrap="wrap">
+                    <Stack
+                        direction={{ xs: 'column', sm: 'row' }}
+                        spacing={3}
+                        alignItems={{ xs: 'stretch', sm: 'center' }}
+                    >
                         <Button
                             variant="contained"
                             size="large"
-                            href="#experience"
+                            href="#contact"
                             endIcon={<ArrowForward />}
-                            sx={{ px: 4, py: 1.5, fontSize: '1rem', borderRadius: 2 }}
-                        >
-                            View My Work
-                        </Button>
-                        <Button
-                            variant="outlined"
-                            size="large"
-                            href="#"
-                            endIcon={<Download />}
                             sx={{
                                 px: 4,
                                 py: 1.5,
                                 fontSize: '1rem',
                                 borderRadius: 2,
-                                color: 'text.primary',
-                                borderColor: 'rgba(255,255,255,0.2)',
-                                backdropFilter: 'blur(10px)',
-                                bgcolor: 'rgba(255,255,255,0.05)',
-                                '&:hover': {
-                                    bgcolor: 'rgba(255,255,255,0.1)',
-                                    borderColor: 'white'
-                                }
+                                width: { xs: '100%', sm: 'auto' }
                             }}
                         >
-                            Download CV
+                            Contact Me
                         </Button>
+
                     </Stack>
                 </Box>
             </Container>

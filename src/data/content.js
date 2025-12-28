@@ -15,13 +15,18 @@ export const content = {
         icon: Email,
         url: "mailto:hugoviana93@gmail.com"
       },
-      // Uncomment and add real links when available
-      /*
+      {
+        name: "Phone",
+        icon: Phone,
+        url: "tel:+351910617744"
+      },
       {
         name: "LinkedIn",
         icon: LinkedIn,
-        url: "https://linkedin.com/in/yourprofile"
+        url: "https://www.linkedin.com/in/hugo-viana-8967b81aa/"
       },
+      // Uncomment and add real links when available
+      /*
       {
         name: "GitHub",
         icon: GitHub,
@@ -49,7 +54,7 @@ export const content = {
   experience: [
     {
       company: "Celfocus / Vodafone",
-      role: "Mid-Level Fullstack Developer",
+      role: "Fullstack Developer",
       period: "2024 – Present",
       description: "Developing enterprise-level web applications using .NET Core and React. Architecting responsive user interfaces for telecommunications services. Collaborating in Agile/Scrum teams to ensure clean, error-free code."
     },
@@ -63,6 +68,12 @@ export const content = {
       company: "ICP Logística",
       role: "Junior C# Developer",
       period: "2022 – 2023",
+      description: "Developed internal logistics tools using C# and Windows applications. Troubleshot and optimized legacy codebases."
+    },
+    {
+      company: "XD Software",
+      role: "Junior C# Developer / Technical Support",
+      period: "2021 – 2022",
       description: "Developed internal logistics tools using C# and Windows applications. Troubleshot and optimized legacy codebases."
     }
   ]

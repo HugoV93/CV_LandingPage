@@ -136,7 +136,11 @@ const Navbar = (props) => {
                                         sx={{
                                             textTransform: 'none',
                                             fontSize: '1rem',
-                                            '&:hover': { color: 'primary.main' },
+                                            color: 'text.secondary',
+                                            '&:hover': {
+                                                color: 'text.primary',
+                                                bgcolor: 'transparent'
+                                            },
                                         }}
                                     >
                                         {link.title}

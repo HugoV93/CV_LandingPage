@@ -27,10 +27,7 @@ const Experience = ({ content }) => {
                             sx={{
                                 p: 4,
                                 borderLeft: (theme) => `4px solid ${theme.palette.primary.main}`,
-                                background: 'rgba(30, 41, 59, 0.6)',
-                                backdropFilter: 'blur(12px)',
-                                transition: 'transform 0.3s',
-                                '&:hover': { transform: 'translateX(10px)' },
+                                // Theme defaults handle background, blur, and hover interaction
                             }}
                         >
                             <Stack
