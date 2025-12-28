@@ -45,23 +45,16 @@ const Footer = ({ content }) => {
                         Feel free to reach out for collaborations or just a friendly hello.
                     </Typography>
 
-                    <Stack direction="row" spacing={2} flexWrap="wrap" justifyContent="center">
+                    <Stack
+                        direction={{ xs: 'column', sm: 'row' }}
+                        spacing={3}
+                        flexWrap="wrap"
+                        justifyContent="center"
+                        sx={{ width: { xs: '100%', sm: 'auto' } }}
+                    >
                         {/* Social Links from Props */}
                         {content?.social?.map((item) => {
-                            // Check if we have a mapping, otherwise fallback (or handle appropriately)
-                            // Note: Lucide icons were used before. We need to map them or import them.
-                            // For now, assuming standard naming or using what's available.
-                            // If content.js imports Lucide icons directly, we can't use them easily in MUI unless we wrap them.
-                            // Let's rely on the fact we installed @mui/icons-material and map likely names.
-                            // Actually, the previous file used `item.icon`. If `item.icon` is a component, we can render it? 
-                            // Yes, but it's a Lucide component. We should probably use MUI icons for consistency.
-                            // Let's see if we can just render `item.icon` as a component if it's passed.
-                            // But we want to remove Lucide dependency eventually. 
-                            // Let's Assume for now we will fix data/content.js later or accept Lucide icons inside MUI buttons.
-
                             const IconComponent = item.icon;
-                            // If item.icon is a React component (Lucide), we can use it.
-                            // But we want to use MUI IconButton.
 
                             return (
                                 <Box
@@ -79,9 +72,11 @@ const Footer = ({ content }) => {
                                         color: 'text.primary',
                                         display: 'flex',
                                         alignItems: 'center',
+                                        justifyContent: 'center',
                                         gap: 1,
                                         transition: 'all 0.3s ease',
                                         textDecoration: 'none',
+                                        width: { xs: '100%', sm: 'auto' }, // Full width on mobile
                                         '&:hover': {
                                             transform: 'translateY(-5px)',
                                             borderColor: 'primary.main',
@@ -95,9 +90,6 @@ const Footer = ({ content }) => {
                                 </Box>
                             )
                         })}
-
-
-
                     </Stack>
 
                     <Typography variant="body2" color="text.secondary" sx={{ mt: 4 }}>
