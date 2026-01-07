@@ -1,6 +1,9 @@
 import React from 'react';
 import { Container, Box, Typography, Button, Stack } from '@mui/material';
-import { ArrowForward } from '@mui/icons-material';
+import { ArrowForward, Download } from '@mui/icons-material';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import ResumePDF from '../components/ResumePDF';
+import { content as fullContent } from '../data/content';
 
 const Hero = ({ content }) => {
     return (
@@ -107,6 +110,36 @@ const Hero = ({ content }) => {
                             Contact Me
                         </Button>
 
+                        <PDFDownloadLink
+                            document={<ResumePDF content={fullContent} />}
+                            fileName="Hugo_Viana_CV.pdf"
+                            style={{ textDecoration: 'none' }}
+                        >
+                            {({ blob, url, loading, error }) => (
+                                <Button
+                                    component="div"
+                                    variant="outlined"
+                                    size="large"
+                                    startIcon={<Download />}
+                                    sx={{
+                                        px: 4,
+                                        py: 1.5,
+                                        fontSize: '1rem',
+                                        borderRadius: 2,
+                                        width: { xs: '100%', sm: 'auto' },
+                                        borderColor: 'primary.main',
+                                        color: 'primary.main',
+                                        cursor: 'pointer', // Ensure it looks clickable
+                                        '&:hover': {
+                                            borderColor: 'primary.dark',
+                                            backgroundColor: 'rgba(59, 130, 246, 0.05)',
+                                        }
+                                    }}
+                                >
+                                    {loading ? 'Loading...' : 'Download CV'}
+                                </Button>
+                            )}
+                        </PDFDownloadLink>
                     </Stack>
                 </Box>
             </Container>

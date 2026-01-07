@@ -11,6 +11,7 @@ export const content = {
     birthDate: "25 October 1993", // Placeholder
     phone: "+351 910 617 744",
     email: "hugoviana93@gmail.com",
+    website: "https://hv-landing-page.vercel.app", // Update with actual URL
     social: [
       {
         name: "Email",
